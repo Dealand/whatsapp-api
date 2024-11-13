@@ -303,7 +303,7 @@ const getContacts = async (req, res) => {
     const client = sessions.get(req.params.sessionId)
     const contacts = await client.getContacts()
     await sendContactsToQueue(req.params.sessionId, contacts)
-    res.json({ success: true, contacts })
+    res.json({ success: true })
   } catch (error) {
     sendErrorResponse(res, 500, error.message)
   }
@@ -770,7 +770,7 @@ const getLabels = async (req, res) => {
     const client = sessions.get(req.params.sessionId)
     const labels = await client.getLabels()
     await sendLabelsToQueue(req.params.sessionId, labels)
-    res.json({ success: true, labels })
+    res.json({ success: true })
   } catch (error) {
     sendErrorResponse(res, 500, error.message)
   }
